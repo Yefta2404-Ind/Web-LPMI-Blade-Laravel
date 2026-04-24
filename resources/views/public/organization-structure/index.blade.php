@@ -1,982 +1,704 @@
 @extends('layouts.public')
 @section('title', 'Struktur Organisasi')
+@section('styles')
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+@endsection
 @section('content')
 
 <style>
-/* ============================================
-   PROFESSIONAL ORGANIZATION STRUCTURE STYLES
-   WITH SOLID COLORS & SMOOTH ANIMATIONS
-   ============================================ */
-   
-/* ----- RESET & BASE ----- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* ================================================
+   STRUKTUR ORGANISASI — PROFESSIONAL REDESIGN
+   Theme: Clean Authority · Forest Green + Gold
+   Font: DM Serif Display / DM Sans
+   ================================================ */
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: #f0f4f8;
-    color: #1a1f36;
-    line-height: 1.5;
-}
+/* ----- RESET ----- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ----- ANIMATIONS ----- */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes scaleIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes slideInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 0.6;
-    }
-    50% {
-        transform: scale(1.1);
-        opacity: 1;
-    }
-}
-
-@keyframes shimmer {
-    0% {
-        background-position: -200% 0;
-    }
-    100% {
-        background-position: 200% 0;
-    }
-}
-
-/* Animation Classes */
-.animate-fade-up {
-    animation: fadeInUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
-}
-
-.animate-fade-left {
-    animation: fadeInLeft 0.5s ease forwards;
-}
-
-.animate-fade-right {
-    animation: fadeInRight 0.5s ease forwards;
-}
-
-.animate-scale {
-    animation: scaleIn 0.5s cubic-bezier(0.2, 0.9, 0.4, 1) forwards;
-}
-
-.animate-slide-down {
-    animation: slideInDown 0.5s ease forwards;
-}
-
-/* Animation Delays */
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
-.delay-500 { animation-delay: 0.5s; }
-
-/* Reduced Motion Support */
-@media (prefers-reduced-motion: reduce) {
-    .animate-fade-up, .animate-fade-left, .animate-fade-right,
-    .animate-scale, .animate-slide-down {
-        animation: none;
-        opacity: 1;
-        transform: none;
-    }
-}
-
-/* ----- LAYOUT ----- */
-.org-wrapper {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-}
-
-@media (min-width: 768px) {
-    .org-wrapper {
-        padding: 2.5rem 1.5rem;
-    }
-}
-
-@media (min-width: 1200px) {
-    .org-wrapper {
-        padding: 3rem 2rem;
-    }
-}
-
-/* ----- HEADER SECTION ----- */
-.org-header {
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 3px solid #2563eb;
+/* ----- PAGE HERO BANNER ----- */
+.so-hero {
     position: relative;
+    background: var(--primary);
+    overflow: hidden;
+    padding: 56px 0 44px;
 }
 
-.org-header::after {
+.so-hero::before {
     content: '';
     position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 80px;
-    height: 3px;
-    background: #4f46e5;
-    animation: fadeInRight 0.6s ease forwards;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 70% 100% at 110% 50%, rgba(201,168,76,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at -10% 50%, rgba(255,255,255,0.03) 0%, transparent 60%);
+    pointer-events: none;
 }
 
-@media (min-width: 768px) {
-    .org-header {
-        margin-bottom: 3rem;
-        padding-bottom: 2rem;
-    }
+/* Decorative grid lines */
+.so-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
 }
 
-.org-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #0f172a;
-    letter-spacing: -0.3px;
-    margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, #1e293b 0%, #2563eb 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-@media (min-width: 768px) {
-    .org-title {
-        font-size: 1.75rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .org-title {
-        font-size: 2rem;
-    }
-}
-
-.org-subtitle {
-    font-size: 0.875rem;
-    color: #64748b;
-    margin-top: 0.25rem;
-}
-
-@media (min-width: 768px) {
-    .org-subtitle {
-        font-size: 1rem;
-    }
-}
-
-/* ----- STRUCTURE CARD ----- */
-.structure-card {
-    background: #ffffff;
-    border-radius: 16px;
-    border: 1px solid #e2e8f0;
-    margin-bottom: 2rem;
-    overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
-
-@media (min-width: 768px) {
-    .structure-card {
-        margin-bottom: 2.5rem;
-        border-radius: 20px;
-    }
-}
-
-.structure-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
-}
-
-/* Card Header - Solid Colors */
-.card-header {
-    padding: 1rem 1.25rem;
-    border-bottom: 1px solid #eef2f6;
+.so-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 4vw, 40px);
     display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
-    gap: 0.75rem;
-    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-}
-
-@media (min-width: 640px) {
-    .card-header {
-        padding: 1.25rem 1.5rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .card-header {
-        padding: 1.5rem 2rem;
-    }
-}
-
-.card-title {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    gap: 24px;
     flex-wrap: wrap;
 }
 
-.card-badge {
-    background: #2563eb;
-    color: #ffffff;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 0.25rem 0.875rem;
-    border-radius: 30px;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
-}
+.so-hero-text {}
 
-@media (min-width: 640px) {
-    .card-badge {
-        font-size: 0.8125rem;
-        padding: 0.3125rem 1rem;
-    }
-}
-
-.card-name {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #0f172a;
-}
-
-@media (min-width: 640px) {
-    .card-name {
-        font-size: 1.125rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .card-name {
-        font-size: 1.25rem;
-    }
-}
-
-.card-stats {
-    font-size: 0.75rem;
-    color: #475569;
-    background: #f1f5f9;
-    padding: 0.25rem 0.875rem;
-    border-radius: 30px;
-    font-weight: 500;
-}
-
-@media (min-width: 640px) {
-    .card-stats {
-        font-size: 0.8125rem;
-        padding: 0.3125rem 1rem;
-    }
-}
-
-/* Card Body */
-.card-body {
-    padding: 1.25rem;
-}
-
-@media (min-width: 640px) {
-    .card-body {
-        padding: 1.5rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .card-body {
-        padding: 2rem;
-    }
-}
-
-/* ----- LEVEL SECTION ----- */
-.level-section {
-    margin-bottom: 1.75rem;
-}
-
-@media (min-width: 768px) {
-    .level-section {
-        margin-bottom: 2rem;
-    }
-}
-
-.level-section:last-child {
-    margin-bottom: 0;
-}
-
-.level-header {
-    display: flex;
+.so-hero-eyebrow {
+    display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-}
-
-@media (min-width: 768px) {
-    .level-header {
-        margin-bottom: 1.25rem;
-        gap: 1rem;
-    }
-}
-
-.level-line {
-    flex: 1;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
-}
-
-/* Level Label - Solid Colors */
-.level-label {
-    font-size: 0.6875rem;
-    font-weight: 700;
+    gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 0.375rem 1rem;
-    border-radius: 30px;
-    color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: var(--gold-light);
+    margin-bottom: 12px;
 }
 
-@media (min-width: 640px) {
-    .level-label {
-        font-size: 0.75rem;
-        padding: 0.4375rem 1.25rem;
-    }
-}
-
-/* Level Color Variants - Solid Colors */
-.level-label.lv0 { background: #2563eb; }
-.level-label.lv1 { background: #059669; }
-.level-label.lv2 { background: #d97706; }
-.level-label.lv3 { background: #7c3aed; }
-.level-label.lv4 { background: #db2777; }
-.level-label.lv5 { background: #475569; }
-
-/* ----- MEMBER GRID (Fully Responsive) ----- */
-.member-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-}
-
-@media (min-width: 480px) {
-    .member-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-    }
-}
-
-@media (min-width: 640px) {
-    .member-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-    }
-}
-
-@media (min-width: 768px) {
-    .member-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.25rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .member-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.5rem;
-    }
-}
-
-@media (min-width: 1280px) {
-    .member-grid {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 1.5rem;
-    }
-}
-
-/* Single item grid */
-.member-grid.single {
-    grid-template-columns: 1fr;
-    max-width: 280px;
-    margin: 0 auto;
-}
-
-@media (min-width: 640px) {
-    .member-grid.single {
-        max-width: 300px;
-    }
-}
-
-/* Two items grid */
-.member-grid.double {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-@media (min-width: 640px) {
-    .member-grid.double {
-        max-width: 560px;
-    }
-}
-
-/* Three items grid */
-.member-grid.triple {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-@media (min-width: 640px) {
-    .member-grid.triple {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-/* ----- MEMBER CARD ----- */
-.member-card {
-    background: #ffffff;
-    border: 1px solid #eef2f6;
-    border-radius: 14px;
-    padding: 1rem 0.5rem 0.875rem;
-    text-align: center;
-    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    position: relative;
-    overflow: hidden;
-}
-
-.member-card::before {
+.so-hero-eyebrow::before {
     content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #2563eb, #4f46e5);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+    display: block;
+    width: 20px; height: 2px;
+    background: var(--gold-light);
+    border-radius: 2px;
 }
 
-@media (min-width: 640px) {
-    .member-card {
-        padding: 1.25rem 0.75rem 1rem;
-        border-radius: 16px;
-    }
+.so-hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
-@media (min-width: 1024px) {
-    .member-card {
-        padding: 1.5rem 1rem 1.25rem;
-        border-radius: 18px;
-    }
+.so-hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
 }
 
-.member-card:hover {
-    transform: translateY(-6px);
-    border-color: #cbd5e1;
-    box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.15);
+.so-hero-sub {
+    margin-top: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.55);
+    font-weight: 400;
 }
 
-.member-card:hover::before {
-    transform: scaleX(1);
-}
-
-/* Avatar - Solid Colors */
-.member-avatar {
-    width: 56px;
-    height: 56px;
-    margin: 0 auto 0.75rem;
-    border-radius: 50%;
+.so-hero-meta {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 1rem;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-.member-card:hover .member-avatar {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
-}
-
-@media (min-width: 640px) {
-    .member-avatar {
-        width: 64px;
-        height: 64px;
-        margin-bottom: 0.875rem;
-        font-size: 1.125rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .member-avatar {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 1rem;
-        font-size: 1.25rem;
-    }
-}
-
-.member-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Avatar Colors - Solid */
-.avatar-0 { background: #2563eb; color: #ffffff; }
-.avatar-1 { background: #059669; color: #ffffff; }
-.avatar-2 { background: #d97706; color: #ffffff; }
-.avatar-3 { background: #7c3aed; color: #ffffff; }
-.avatar-4 { background: #db2777; color: #ffffff; }
-.avatar-5 { background: #475569; color: #ffffff; }
-
-/* Member Info */
-.member-name {
-    font-size: 0.8125rem;
-    font-weight: 700;
-    color: #0f172a;
-    margin-bottom: 0.25rem;
-    line-height: 1.3;
-}
-
-@media (min-width: 640px) {
-    .member-name {
-        font-size: 0.875rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .member-name {
-        font-size: 0.9375rem;
-    }
-}
-
-.member-position {
-    font-size: 0.6875rem;
-    color: #64748b;
-    line-height: 1.3;
-    font-weight: 500;
-}
-
-@media (min-width: 640px) {
-    .member-position {
-        font-size: 0.75rem;
-    }
-}
-
-/* ----- HIERARCHY CONNECTOR with Animation ----- */
-.hierarchy-line {
+.so-meta-chip {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 100px;
+    padding: 8px 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0.5rem 0 1rem;
-    animation: fadeInUp 0.4s ease backwards;
+    min-width: 80px;
 }
 
-.line-vertical {
-    width: 2px;
-    height: 28px;
-    background: linear-gradient(180deg, #94a3b8, #cbd5e1);
-    border-radius: 1px;
+.so-meta-chip .num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: var(--gold-light);
+    line-height: 1;
 }
 
-.line-dot {
-    width: 8px;
-    height: 8px;
-    background: #2563eb;
-    border-radius: 50%;
-    margin-top: 4px;
-    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
-    animation: pulse 2s ease-in-out infinite;
-}
-
-/* Separator between structures */
-.struct-separator {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin: 1.5rem 0;
-    animation: fadeInUp 0.5s ease backwards;
-}
-
-@media (min-width: 768px) {
-    .struct-separator {
-        margin: 2rem 0;
-        gap: 1rem;
-    }
-}
-
-.sep-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
-}
-
-.sep-icon {
-    display: flex;
-    gap: 6px;
-}
-
-.sep-dot {
-    width: 5px;
-    height: 5px;
-    background: #2563eb;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-}
-
-.struct-separator:hover .sep-dot {
-    transform: scale(1.5);
-}
-
-.sep-dot:nth-child(1) { transition-delay: 0s; }
-.sep-dot:nth-child(2) { transition-delay: 0.05s; }
-.sep-dot:nth-child(3) { transition-delay: 0.1s; }
-
-/* ----- EMPTY STATES ----- */
-.empty-message {
-    text-align: center;
-    padding: 2rem;
-    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-    border-radius: 14px;
-    color: #64748b;
-    font-size: 0.875rem;
-    animation: fadeInUp 0.5s ease;
-}
-
-@media (min-width: 768px) {
-    .empty-message {
-        padding: 3rem;
-        font-size: 0.9375rem;
-        border-radius: 18px;
-    }
-}
-
-.empty-global {
-    text-align: center;
-    padding: 3rem 1.5rem;
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 20px;
-    animation: scaleIn 0.5s ease;
-}
-
-@media (min-width: 768px) {
-    .empty-global {
-        padding: 4rem 2rem;
-        border-radius: 24px;
-    }
-}
-
-.empty-icon {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 1rem;
-    background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@media (min-width: 768px) {
-    .empty-icon {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 1.25rem;
-    }
-}
-
-.empty-title {
-    font-weight: 700;
-    font-size: 1rem;
-    color: #1e293b;
-    margin-bottom: 0.5rem;
-}
-
-@media (min-width: 768px) {
-    .empty-title {
-        font-size: 1.125rem;
-    }
-}
-
-.empty-desc {
-    font-size: 0.8125rem;
-    color: #64748b;
-}
-
-@media (min-width: 768px) {
-    .empty-desc {
-        font-size: 0.875rem;
-    }
-}
-
-/* ----- FOOTER ----- */
-.org-footer {
-    margin-top: 2.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #e2e8f0;
-    text-align: center;
-    animation: fadeInUp 0.6s ease backwards;
-    animation-delay: 0.3s;
-}
-
-@media (min-width: 768px) {
-    .org-footer {
-        margin-top: 3rem;
-        padding-top: 2rem;
-    }
-}
-
-.footer-line {
-    width: 50px;
-    height: 3px;
-    background: linear-gradient(90deg, #2563eb, #4f46e5);
-    margin: 0 auto 0.75rem;
-    border-radius: 3px;
-}
-
-.footer-text {
-    font-size: 0.6875rem;
-    color: #94a3b8;
-    letter-spacing: 1px;
+.so-meta-chip .lbl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-top: 2px;
     font-weight: 600;
 }
 
+/* ----- MAIN CONTENT AREA ----- */
+.so-page {
+    background: #f4f6f5;
+    min-height: 60vh;
+    padding: clamp(32px, 5vw, 64px) 0;
+}
+
+.so-container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 4vw, 40px);
+}
+
+/* ----- STRUCTURE BLOCK ----- */
+.so-structure-block {
+    margin-bottom: clamp(32px, 5vw, 56px);
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1);
+}
+
+.so-structure-block.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Block header */
+.so-block-header {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 0;
+    border-radius: 16px 16px 0 0;
+    overflow: hidden;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.04);
+}
+
+.so-block-accent {
+    width: 6px;
+    background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dark) 100%);
+    flex-shrink: 0;
+    border-radius: 0;
+}
+
+.so-block-title-area {
+    flex: 1;
+    background: var(--primary);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.so-block-index {
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.so-block-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
+.so-block-count {
+    background: rgba(201,168,76,0.18);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold-light);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    white-space: nowrap;
+}
+
+/* Block body */
+.so-block-body {
+    background: #fff;
+    border: 1px solid #e4ebe7;
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    padding: clamp(20px, 4vw, 40px);
+    box-shadow: 0 8px 32px rgba(10,61,46,0.06);
+}
+
+/* ----- LEVEL SECTION ----- */
+.so-level {
+    margin-bottom: 0;
+}
+
+.so-level + .so-level {
+    margin-top: 8px;
+}
+
+/* Connector between levels */
+.so-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px 0 4px;
+    gap: 0;
+}
+
+.so-conn-line {
+    width: 2px;
+    height: 20px;
+    background: linear-gradient(180deg, var(--primary) 0%, rgba(10,61,46,0.2) 100%);
+}
+
+.so-conn-arrow {
+    width: 0; height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid rgba(10,61,46,0.25);
+}
+
+/* Level label row */
+.so-level-label-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.so-level-hr {
+    flex: 1;
+    height: 1px;
+    background: #e4ebe7;
+}
+
+.so-level-badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 100px;
+    white-space: nowrap;
+}
+
+/* Level badge color variants */
+.so-level-badge.lv0 { background: var(--primary); color: #fff; }
+.so-level-badge.lv1 { background: #1a6b47; color: #fff; }
+.so-level-badge.lv2 { background: var(--gold-dark); color: #fff; }
+.so-level-badge.lv3 { background: #2d8a5e; color: #fff; }
+.so-level-badge.lv4 { background: #3a5a47; color: #fff; }
+.so-level-badge.lv5 { background: #55657b; color: #fff; }
+
+/* ----- MEMBER GRID ----- */
+.so-member-grid {
+    display: grid;
+    gap: clamp(10px, 2vw, 18px);
+    /* Default: responsive auto-fill */
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+}
+
+@media (min-width: 480px) {
+    .so-member-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+}
 @media (min-width: 768px) {
-    .footer-text {
-        font-size: 0.75rem;
+    .so-member-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+}
+@media (min-width: 1024px) {
+    .so-member-grid { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
+}
+
+.so-member-grid.g-single   { grid-template-columns: 200px; justify-content: center; }
+.so-member-grid.g-double   { grid-template-columns: repeat(2, 200px); justify-content: center; }
+.so-member-grid.g-triple   { grid-template-columns: repeat(3, 1fr); max-width: 580px; margin: 0 auto; }
+
+@media (max-width: 479px) {
+    .so-member-grid.g-single  { grid-template-columns: minmax(130px, 180px); }
+    .so-member-grid.g-double  { grid-template-columns: repeat(2, 1fr); }
+    .so-member-grid.g-triple  { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ----- MEMBER CARD ----- */
+.so-card {
+    background: #fff;
+    border: 1px solid #e4ebe7;
+    border-radius: 14px;
+    padding: clamp(14px, 2.5vw, 22px) clamp(10px, 2vw, 16px) clamp(12px, 2vw, 18px);
+    text-align: center;
+    transition: transform 0.28s cubic-bezier(0.22,1,0.36,1),
+                box-shadow 0.28s cubic-bezier(0.22,1,0.36,1),
+                border-color 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+}
+
+.so-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.so-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 36px rgba(10,61,46,0.13);
+    border-color: rgba(10,61,46,0.18);
+}
+
+.so-card:hover::after {
+    transform: scaleX(1);
+}
+
+/* Avatar */
+.so-avatar {
+    width: clamp(56px, 10vw, 76px);
+    height: clamp(56px, 10vw, 76px);
+    border-radius: 50%;
+    margin: 0 auto clamp(10px, 1.5vw, 14px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-weight: 400;
+    color: #fff;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+    position: relative;
+}
+
+.so-card:hover .so-avatar {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    transform: scale(1.04);
+}
+
+.so-avatar img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Avatar ring decoration */
+.so-avatar::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.3);
+    pointer-events: none;
+}
+
+.av-0 { background: linear-gradient(135deg, var(--primary) 0%, #1a6b47 100%); }
+.av-1 { background: linear-gradient(135deg, #1a6b47 0%, #2d8a5e 100%); }
+.av-2 { background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%); }
+.av-3 { background: linear-gradient(135deg, #2d8a5e 0%, var(--primary-light) 100%); }
+.av-4 { background: linear-gradient(135deg, #3a5a47 0%, #1a6b47 100%); }
+.av-5 { background: linear-gradient(135deg, #55657b 0%, #3a4f65 100%); }
+
+/* Card text */
+.so-card-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    font-weight: 700;
+    color: #0f2d1f;
+    line-height: 1.3;
+    margin-bottom: 4px;
+}
+
+.so-card-pos {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(0.62rem, 1.2vw, 0.72rem);
+    color: #6b8c7a;
+    line-height: 1.35;
+    font-weight: 500;
+}
+
+/* ----- SEPARATOR BETWEEN STRUCTURES ----- */
+.so-sep {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: clamp(16px, 3vw, 28px) 0;
+}
+
+.so-sep-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c8d9ce, transparent);
+}
+
+.so-sep-diamond {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+}
+
+/* ----- EMPTY STATES ----- */
+.so-empty-level {
+    text-align: center;
+    padding: 28px 20px;
+    background: #f9fbfa;
+    border-radius: 12px;
+    border: 1px dashed #c8d9ce;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: #6b8c7a;
+}
+
+.so-empty-global {
+    text-align: center;
+    padding: clamp(48px, 8vw, 80px) 24px;
+    background: #fff;
+    border: 1px solid #e4ebe7;
+    border-radius: 20px;
+    box-shadow: 0 4px 24px rgba(10,61,46,0.05);
+}
+
+.so-empty-icon {
+    width: 72px; height: 72px;
+    background: linear-gradient(135deg, #eaf4ee 0%, #d4e9dc 100%);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.so-empty-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.so-empty-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: #6b8c7a;
+}
+
+/* ----- SCROLL OBSERVER ----- */
+@media (prefers-reduced-motion: reduce) {
+    .so-structure-block {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
     }
 }
 
-/* ----- PRINT STYLES ----- */
+/* ----- PRINT ----- */
 @media print {
-    .org-wrapper {
-        padding: 0.5rem;
-        max-width: 100%;
-    }
-    
-    .structure-card {
-        break-inside: avoid;
-        box-shadow: none;
-        border: 1px solid #ccc;
-        transform: none;
-    }
-    
-    .member-card {
-        break-inside: avoid;
-    }
-    
-    .member-card:hover {
-        transform: none;
-    }
-    
-    .member-card::before {
-        display: none;
-    }
-    
-    .line-dot {
-        animation: none;
-    }
+    .so-hero { padding: 20px 0; background: #fff !important; }
+    .so-hero-title, .so-block-name { color: #000 !important; -webkit-text-fill-color: #000 !important; }
+    .so-block-title-area { background: #eee !important; }
+    .so-structure-block { opacity: 1 !important; transform: none !important; break-inside: avoid; }
+    .so-card:hover { transform: none; }
+    .so-card::after { display: none; }
 }
 </style>
 
 @php
-    function getInitials($name) {
-        $words = explode(' ', trim($name));
-        if (count($words) >= 2) {
-            return strtoupper(substr($words[0], 0, 1) . substr($words[1], 0, 1));
-        }
-        return strtoupper(substr($name, 0, 2));
+function soInitials(string $name): string {
+    $words = preg_split('/\s+/', trim($name));
+    if (count($words) >= 2) {
+        return strtoupper(mb_substr($words[0],0,1) . mb_substr($words[1],0,1));
     }
-    
-    $levelLabels = [
-        0 => '',
-        1 => '',
-        2 => '',
-        3 => '',
-        4 => '',
-        5 => ''
-    ];
-    
-    $levelColors = ['lv0', 'lv1', 'lv2', 'lv3', 'lv4', 'lv5'];
-    $avatarColors = ['avatar-0', 'avatar-1', 'avatar-2', 'avatar-3', 'avatar-4', 'avatar-5'];
+    return strtoupper(mb_substr($name,0,2));
+}
+
+$levelNames  = ['','','','','',''];
+$levelColors = ['lv0','lv1','lv2','lv3','lv4','lv5'];
+$avatarColors= ['av-0','av-1','av-2','av-3','av-4','av-5'];
+
+$totalMembers   = 0;
+$totalStructures= $structures ? $structures->count() : 0;
+if ($structures) {
+    foreach ($structures as $s) {
+        $totalMembers += $s->members->count();
+    }
+}
 @endphp
 
-<div class="org-wrapper">
-    <!-- Header -->
-    <div class="org-header animate-fade-up">
-        <h1 class="org-title">Struktur Organisasi</h1>
-        
+{{-- ===== HERO ===== --}}
+<div class="so-hero">
+    <div class="so-hero-inner">
+        <div class="so-hero-text">
+            <div class="so-hero-eyebrow">Lembaga Penjaminan Mutu Internal</div>
+            <h1 class="so-hero-title">Struktur <em>Organisasi</em></h1>
+            <p class="so-hero-sub">Susunan kepemimpinan dan keanggotaan resmi LPPMI</p>
+        </div>
+        <div class="so-hero-meta">
+            <div class="so-meta-chip">
+                <span class="num">{{ $totalStructures }}</span>
+                <span class="lbl">Divisi</span>
+            </div>
+            <div class="so-meta-chip">
+                <span class="num">{{ $totalMembers }}</span>
+                <span class="lbl">Anggota</span>
+            </div>
+        </div>
     </div>
-    
-    @if($structures && $structures->count() > 0)
-        
-        @foreach($structures as $structIndex => $structure)
-            @if($structIndex > 0)
-                <div class="struct-separator">
-                    <div class="sep-line"></div>
-                    <div class="sep-icon">
-                        <div class="sep-dot"></div>
-                        <div class="sep-dot"></div>
-                        <div class="sep-dot"></div>
-                    </div>
-                    <div class="sep-line"></div>
-                </div>
-            @endif
-            
-            <div class="structure-card animate-scale" style="animation-delay: {{ $structIndex * 0.1 }}s">
-                <div class="card-header">
-                    <div class="card-title">
-                        <span class="card-badge">{{ str_pad($structIndex + 1, 2, '0', STR_PAD_LEFT) }}</span>
-                        <span class="card-name">{{ $structure->name }}</span>
-                    </div>
-                    <div class="card-stats">
-                        {{ $structure->members->count() }} Anggota
-                    </div>
-                </div>
-                
-                <div class="card-body">
-                    @if($structure->members->count() > 0)
-                        @php
-                            $grouped = $structure->members->sortBy('order')->groupBy('level')->sortKeys();
-                            $memberCounter = 0;
-                        @endphp
-                        
-                        @foreach($grouped as $level => $levelMembers)
-                            @php
-                                $levelIdx = min($level, 5);
-                                $memberCount = $levelMembers->count();
-                                
-                                $gridClass = '';
-                                if ($memberCount == 1) {
-                                    $gridClass = 'single';
-                                } elseif ($memberCount == 2) {
-                                    $gridClass = 'double';
-                                } elseif ($memberCount == 3) {
-                                    $gridClass = 'triple';
-                                }
-                            @endphp
-                            
-                            @if(!$loop->first)
-                                <div class="hierarchy-line">
-                                    <div class="line-vertical"></div>
-                                    <div class="line-dot"></div>
-                                </div>
-                            @endif
-                            
-                            <div class="level-section">
-                                <div class="level-header animate-fade-left" style="animation-delay: {{ $memberCounter * 0.05 }}s">
-                                    <div class="level-line"></div>
-                                    <span class="level-label {{ $levelColors[$levelIdx] }}">{{ $levelLabels[$levelIdx] }}</span>
-                                    <div class="level-line"></div>
-                                </div>
-                                
-                                <div class="member-grid {{ $gridClass }}">
-                                    @foreach($levelMembers as $member)
-                                        <div class="member-card animate-scale" style="animation-delay: {{ $memberCounter * 0.03 }}s">
-                                            <div class="member-avatar {{ $avatarColors[$levelIdx] }}">
-                                                @if($member->photo && Storage::disk('public')->exists($member->photo))
-                                                    <img src="{{ asset('storage/' . $member->photo) }}" alt="{{ $member->name }}" loading="lazy">
-                                                @else
-                                                    {{ getInitials($member->name) }}
-                                                @endif
-                                            </div>
-                                            <div class="member-name">{{ $member->name }}</div>
-                                            <div class="member-position">{{ $member->position }}</div>
-                                        </div>
-                                        @php $memberCounter++; @endphp
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endforeach
-                    @else
-                        <div class="empty-message">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom: 0.5rem;">
-                                <circle cx="12" cy="12" r="10"/>
-                                <line x1="12" y1="8" x2="12" y2="12"/>
-                                <line x1="12" y1="16" x2="12.01" y2="16"/>
-                            </svg>
-                            <div>Belum ada data anggota</div>
-                        </div>
-                    @endif
-                </div>
-            </div>
-        @endforeach
-        
-        <!-- Footer -->
-        <div class="org-footer">
-            <div class="footer-line"></div>
-            <div class="footer-text">STRUKTUR ORGANISASI</div>
-        </div>
-        
-    @else
-        <!-- Empty State -->
-        <div class="empty-global">
-            <div class="empty-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="1.5">
-                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                </svg>
-            </div>
-            <div class="empty-title">Data Struktur Organisasi Belum Tersedia</div>
-            <div class="empty-desc">Silakan hubungi administrator untuk mengisi data struktur organisasi.</div>
-        </div>
-    @endif
 </div>
 
+{{-- ===== MAIN ===== --}}
+<div class="so-page">
+    <div class="so-container">
+
+        @if($structures && $structures->count() > 0)
+
+            @foreach($structures as $sIdx => $structure)
+
+                @if($sIdx > 0)
+                    <div class="so-sep">
+                        <div class="so-sep-line"></div>
+                        <div class="so-sep-diamond"></div>
+                        <div class="so-sep-line"></div>
+                    </div>
+                @endif
+
+                <div class="so-structure-block" data-observe>
+
+                    {{-- Block Header --}}
+                    <div class="so-block-header">
+                        <div class="so-block-accent"></div>
+                        <div class="so-block-title-area">
+                            <div>
+                                <div class="so-block-index">Struktur #{{ str_pad($sIdx+1, 2, '0', STR_PAD_LEFT) }}</div>
+                                <div class="so-block-name">{{ $structure->name }}</div>
+                            </div>
+                            <span class="so-block-count">{{ $structure->members->count() }} Anggota</span>
+                        </div>
+                    </div>
+
+                    {{-- Block Body --}}
+                    <div class="so-block-body">
+                        @if($structure->members->count() > 0)
+                            @php
+                                $grouped = $structure->members->sortBy('order')->groupBy('level')->sortKeys();
+                            @endphp
+
+                            @foreach($grouped as $level => $levelMembers)
+                                @php
+                                    $lvIdx = min((int)$level, 5);
+                                    $cnt   = $levelMembers->count();
+                                    $gCls  = match(true) {
+                                        $cnt === 1 => 'g-single',
+                                        $cnt === 2 => 'g-double',
+                                        $cnt === 3 => 'g-triple',
+                                        default    => '',
+                                    };
+                                @endphp
+
+                                @if(!$loop->first)
+                                    <div class="so-connector">
+                                        <div class="so-conn-line"></div>
+                                        <div class="so-conn-arrow"></div>
+                                    </div>
+                                @endif
+
+                                <div class="so-level">
+                                    {{-- Level label --}}
+                                    <div class="so-level-label-row">
+                                        <div class="so-level-hr"></div>
+                                        <span class="so-level-badge {{ $levelColors[$lvIdx] }}">
+                                            {{ $levelNames[$lvIdx] }}
+                                        </span>
+                                        <div class="so-level-hr"></div>
+                                    </div>
+
+                                    {{-- Members --}}
+                                    <div class="so-member-grid {{ $gCls }}">
+                                        @foreach($levelMembers as $member)
+                                            <div class="so-card">
+                                                <div class="so-avatar {{ $avatarColors[$lvIdx] }}">
+                                                    @if($member->photo && Storage::disk('public')->exists($member->photo))
+                                                        <img src="{{ asset('storage/' . $member->photo) }}"
+                                                             alt="{{ $member->name }}" loading="lazy">
+                                                    @else
+                                                        {{ soInitials($member->name) }}
+                                                    @endif
+                                                </div>
+                                                <div class="so-card-name">{{ $member->name }}</div>
+                                                <div class="so-card-pos">{{ $member->position }}</div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                            @endforeach
+
+                        @else
+                            <div class="so-empty-level">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="1.5" style="vertical-align:middle;margin-right:6px;">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 8v4m0 4h.01"/>
+                                </svg>
+                                Belum ada data anggota untuk struktur ini.
+                            </div>
+                        @endif
+                    </div>
+
+                </div>
+
+            @endforeach
+
+        @else
+            {{-- Global empty --}}
+            <div class="so-empty-global">
+                <div class="so-empty-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                         stroke="var(--primary)" stroke-width="1.5">
+                        <rect x="2" y="7" width="20" height="14" rx="2"/>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                </div>
+                <div class="so-empty-title">Data Belum Tersedia</div>
+                <div class="so-empty-desc">Silakan hubungi administrator untuk mengisi data struktur organisasi.</div>
+            </div>
+        @endif
+
+    </div>
+</div>
+
+@endsection
+
+@section('scripts')
+<script>
+// Intersection Observer — reveal on scroll
+(function () {
+    const blocks = document.querySelectorAll('[data-observe]');
+    if (!blocks.length) return;
+
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+                // stagger siblings a little
+                const siblings = [...e.target.parentElement.querySelectorAll('[data-observe]')];
+                const idx = siblings.indexOf(e.target);
+                setTimeout(() => e.target.classList.add('visible'), idx * 80);
+                obs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    blocks.forEach(b => obs.observe(b));
+})();
+</script>
 @endsection
