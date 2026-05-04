@@ -9,51 +9,134 @@
 [![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)
 [![Blade](https://img.shields.io/badge/Blade-FF6B6B?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com/docs/blade)
+[![License](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](LICENSE)
 
 <br/>
 
-> 🎯 **Platform CMS modern untuk mengelola konten website LPMI secara efisien, terstruktur, dan aman.**
+[![Live Demo](https://img.shields.io/badge/🌐%20Live%20Demo-Visit%20Site-0f3460?style=for-the-badge)](https://your-demo-link.com)
+
+<br/>
+
+> A modern, role-based Content Management System built for **LPMI Universitas Gunung Kidul** — manage campus content efficiently without touching a single line of code.
 
 </div>
 
 <br/>
 
-## 🌟 Tentang Proyek
+---
 
-**LPMI Campus CMS** adalah sistem manajemen konten yang dibangun khusus untuk **Lembaga Penjaminan Mutu Internal (LPMI) Universitas Gunung Kidul**. Dirancang agar admin, staff, dan publik bisa mengakses informasi kampus dengan mudah — tanpa perlu menyentuh kode sama sekali.
+## 📌 Overview
 
-> 💡 *Login → Kelola → Publish. Sesederhana itu.*
+**LPMI Campus CMS** is a full-featured web application that centralizes content management for LPMI's official website. Built on the Laravel framework, it supports multi-role access so that admins, staff, and the public each see exactly what they need — nothing more, nothing less.
+
+| What it solves | How |
+|---|---|
+| Scattered content updates | Centralized dashboard for all content types |
+| No approval workflow | Staff submits → Admin reviews → Published |
+| Static, hard-to-edit pages | Dynamic page & menu builder |
+| Unstructured org info | Visual organization structure manager |
 
 <br/>
 
-## ✨ Fitur Unggulan
+---
+
+## ✨ Features
 
 <div align="center">
 
-| 🔐 Auth & Role | 📊 Dashboard | 📰 Berita |
+| 🔐 Auth & Authorization | 📊 Admin Dashboard | 📰 News & Announcements |
 |:-:|:-:|:-:|
-| Login aman dengan kontrol akses berbasis peran Admin, Staff, dan Public | Ringkasan konten & aktivitas sistem dalam satu tampilan | Workflow input → approval sebelum dipublikasikan ke publik |
+| Secure login with role-based access control for Admin, Staff, and Public | Activity summary and content overview in one place | Full editorial workflow: draft → submit → approve → publish |
 
-| 🖼️ Galeri | 📄 Halaman & Menu | 🏛️ Struktur Organisasi |
+| 🖼️ Gallery Management | 📄 Pages & Menus | 🏛️ Organization Structure |
 |:-:|:-:|:-:|
-| Upload & kelola foto kegiatan kampus | Buat & atur halaman statis serta navigasi | Kelola tampilan struktur organisasi LPMI |
+| Upload and manage event photos with ease | Build static pages and navigation menus dynamically | Manage and display LPMI's organizational chart |
 
 </div>
 
 <br/>
 
-## 🛠️ Tech Stack
+---
+
+## 🏗️ Architecture
 
 ```
-🔴  Backend    →  Laravel (PHP 8.x)
-🔵  Frontend   →  Blade Template Engine + Bootstrap / Tailwind CSS
-🟡  Database   →  MySQL
-🟢  Other      →  JavaScript, Composer
+┌─────────────────────────────────────────────────────────┐
+│                        Browser                          │
+└────────────────────┬────────────────────────────────────┘
+                     │ HTTP Request
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│                    Laravel Router                        │
+│              routes/web.php  ·  routes/api.php          │
+└──────┬──────────────┬──────────────────┬────────────────┘
+       │              │                  │
+       ▼              ▼                  ▼
+┌──────────┐   ┌──────────────┐   ┌───────────────┐
+│ Middleware│   │  Controllers │   │    Policies   │
+│  (Auth,  │   │              │   │  (Role-Based  │
+│  Roles)  │   │  - Auth      │   │   Access)     │
+└──────────┘   │  - News      │   └───────────────┘
+               │  - Gallery   │
+               │  - Menu      │
+               │  - Page      │
+               │  - OrgChart  │
+               └──────┬───────┘
+                      │
+                      ▼
+          ┌───────────────────────┐
+          │      Models (ORM)     │
+          │  Eloquent / Laravel   │
+          └──────────┬────────────┘
+                     │
+                     ▼
+          ┌───────────────────────┐
+          │      MySQL Database   │
+          │                       │
+          │  users   · roles      │
+          │  news    · gallery    │
+          │  pages   · menus      │
+          │  org_structures       │
+          └───────────────────────┘
+                     │
+         ┌───────────┴────────────┐
+         ▼                        ▼
+┌─────────────────┐     ┌──────────────────┐
+│   Blade Views   │     │   Public Views   │
+│  (Admin Panel)  │     │  (Landing Page)  │
+└─────────────────┘     └──────────────────┘
 ```
+
+### Role Access Matrix
+
+| Feature | 👑 Admin | ✍️ Staff | 🌐 Public |
+|---|:-:|:-:|:-:|
+| View public content | ✅ | ✅ | ✅ |
+| Submit news / announcements | ✅ | ✅ | ❌ |
+| Approve & publish content | ✅ | ❌ | ❌ |
+| Manage menus & pages | ✅ | ❌ | ❌ |
+| Manage organization structure | ✅ | ❌ | ❌ |
+| Manage gallery | ✅ | ✅ | ❌ |
+| User & role management | ✅ | ❌ | ❌ |
 
 <br/>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:1a1a2e,100:0f3460&height=3" width="100%"/>
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Backend** | Laravel (PHP 8.x) |
+| **Templating** | Blade Template Engine |
+| **Styling** | Bootstrap / Tailwind CSS |
+| **Database** | MySQL |
+| **Language** | PHP, JavaScript |
+| **Package Manager** | Composer |
+
+<br/>
+
+---
 
 ## 📸 Screenshots
 
@@ -62,7 +145,7 @@
 <table>
   <tr>
     <td align="center" width="33%"><b>👑 Admin</b></td>
-    <td align="center" width="33%"><b>👤 Staff</b></td>
+    <td align="center" width="33%"><b>✍️ Staff</b></td>
     <td align="center" width="33%"><b>🌐 Public</b></td>
   </tr>
   <tr>
@@ -72,14 +155,12 @@
   </tr>
 </table>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:1a1a2e,100:0f3460&height=3" width="100%"/>
-
 ### 📰 News Management
 
 <table>
   <tr>
-    <td align="center" width="33%"><b>🌐 Tampilan Publik</b></td>
-    <td align="center" width="33%"><b>✍️ Staff — Input Berita</b></td>
+    <td align="center" width="33%"><b>🌐 Public View</b></td>
+    <td align="center" width="33%"><b>✍️ Staff — Submit</b></td>
     <td align="center" width="33%"><b>✅ Admin — Approval</b></td>
   </tr>
   <tr>
@@ -89,9 +170,7 @@
   </tr>
 </table>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:1a1a2e,100:0f3460&height=3" width="100%"/>
-
-### 📄 Menu & Page Management *(Role Admin Only)*
+### 📄 Menu & Page Management *(Admin Only)*
 
 <table>
   <tr>
@@ -112,20 +191,18 @@
   </tr>
 </table>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:1a1a2e,100:0f3460&height=3" width="100%"/>
-
-### 🏛️ Organization Structure Management *(Role Admin Only)*
+### 🏛️ Organization Structure *(Admin Only)*
 
 <table>
   <tr>
-    <td align="center" colspan="2"><b>🌐 Tampilan Publik</b></td>
+    <td align="center" colspan="2"><b>🌐 Public View</b></td>
   </tr>
   <tr>
     <td colspan="2"><img src="https://github.com/user-attachments/assets/7a7353a2-41d6-437d-b379-31e43e27c814" width="100%" alt="Org Public"/></td>
   </tr>
   <tr>
-    <td align="center" width="50%"><b>🛠️ Panel Admin — Index</b></td>
-    <td align="center" width="50%"><b>➕ Panel Admin — Create</b></td>
+    <td align="center" width="50%"><b>🛠️ Admin — Index</b></td>
+    <td align="center" width="50%"><b>➕ Admin — Create</b></td>
   </tr>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/8cf1078b-eef9-4987-8c36-1ccd6ef294c0" width="100%" alt="Org Admin"/></td>
@@ -135,33 +212,48 @@
 
 <br/>
 
-## 🚀 Instalasi
+---
 
-> **Prasyarat:** PHP 8+, Composer, MySQL sudah terinstall.
+## 🚀 Getting Started
+
+### Prerequisites
+
+- PHP 8.0+
+- Composer
+- MySQL
+- Node.js *(optional, for asset compilation)*
+
+### Installation
 
 ```bash
-# 1️⃣  Clone repository
+# 1. Clone the repository
 git clone https://github.com/Yefta2404-Ind/lpmi-campus-cms.git
 cd lpmi-campus-cms
 
-# 2️⃣  Install dependencies
+# 2. Install PHP dependencies
 composer install
 
-# 3️⃣  Setup environment
+# 3. Set up environment
 cp .env.example .env
 php artisan key:generate
 
-# 4️⃣  Setup database
-# → Edit file .env, sesuaikan DB_DATABASE, DB_USERNAME, DB_PASSWORD
+# 4. Configure your database in .env
+# DB_DATABASE=your_db_name
+# DB_USERNAME=your_username
+# DB_PASSWORD=your_password
+
+# 5. Run migrations
 php artisan migrate
 
-# 5️⃣  Jalankan server
+# 6. Start the development server
 php artisan serve
 ```
 
-🎉 Buka **`http://localhost:8000`** di browser kamu dan mulai eksplorasi!
+Open **`http://localhost:8000`** in your browser. You're good to go! 🎉
 
 <br/>
+
+---
 
 ## 👨‍💻 Author
 
@@ -171,6 +263,6 @@ php artisan serve
 
 [![GitHub](https://img.shields.io/badge/GitHub-Yefta2404--Ind-181717?style=for-the-badge&logo=github)](https://github.com/Yefta2404-Ind)
 
-*Dibangun dengan ☕ dan semangat untuk kemajuan LPMI Universitas Gunung Kidul*
+*Built with ☕ and passion for LPMI Universitas Gunung Kidul*
 
 </div>
