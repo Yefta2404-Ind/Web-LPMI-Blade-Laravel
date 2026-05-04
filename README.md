@@ -1,157 +1,153 @@
 <div align="center">
 
-<br/>
-
-```
-██╗     ██████╗ ███╗   ███╗██╗     ██████╗ ███╗   ███╗███████╗
-██║     ██╔══██╗████╗ ████║██║    ██╔════╝ ████╗ ████║██╔════╝
-██║     ██████╔╝██╔████╔██║██║    ██║      ██╔████╔██║███████╗
-██║     ██╔═══╝ ██║╚██╔╝██║██║    ██║      ██║╚██╔╝██║╚════██║
-███████╗██║     ██║ ╚═╝ ██║██║    ╚██████╗ ██║ ╚═╝ ██║███████║
-╚══════╝╚═╝     ╚═╝     ╚═╝╚═╝     ╚═════╝ ╚═╝     ╚═╝╚══════╝
-```
-
-### **Content Management System — LPMI Universitas Gunung Kidul**
-
-*Kelola konten kampus dengan lebih efisien, dinamis, dan terstruktur.*
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,50:16213e,100:0f3460&height=200&section=header&text=LPMI%20Campus%20CMS&fontSize=48&fontColor=e94560&fontAlignY=38&desc=Content%20Management%20System%20%E2%80%94%20Universitas%20Gunung%20Kidul&descAlignY=58&descColor=a8b2d8" width="100%" />
 
 <br/>
 
-[![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
-[![PHP](https://img.shields.io/badge/PHP-8.x-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
-[![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com)
-[![License](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](LICENSE)
+[![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
+[![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)
+[![Blade](https://img.shields.io/badge/Blade-FF6B6B?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com/docs/blade)
+
+<br/>
+
+> 🎯 **Platform CMS modern untuk mengelola konten website LPMI secara efisien, terstruktur, dan aman.**
 
 </div>
 
----
+<br/>
 
-## 🎯 Tentang Proyek
+## 🌟 Tentang Proyek
 
-**LPMI Campus CMS** adalah platform manajemen konten yang dibangun khusus untuk **Lembaga Penjaminan Mutu Internal (LPMI) Universitas Gunung Kidul**. Sistem ini dirancang untuk mempermudah pengelolaan konten website kampus — dari berita, galeri, hingga struktur organisasi — secara terpusat, aman, dan mudah digunakan oleh berbagai peran pengguna.
+**LPMI Campus CMS** adalah sistem manajemen konten yang dibangun khusus untuk **Lembaga Penjaminan Mutu Internal (LPMI) Universitas Gunung Kidul**. Dirancang agar admin, staff, dan publik bisa mengakses informasi kampus dengan mudah — tanpa perlu menyentuh kode sama sekali.
 
-> 💡 *Tidak perlu sentuh kode. Cukup login, kelola, dan publish.*
+> 💡 *Login → Kelola → Publish. Sesederhana itu.*
 
----
+<br/>
 
 ## ✨ Fitur Unggulan
 
-| Fitur | Deskripsi |
-|-------|-----------|
-| 🔐 **Auth & Role-Based Access** | Login aman dengan kontrol akses berbasis peran (Admin, Staff, Public) |
-| 📊 **Admin Dashboard** | Tampilan ringkasan konten dan aktivitas sistem dalam satu layar |
-| 📰 **Manajemen Berita & Pengumuman** | Workflow input → approval sebelum dipublikasikan |
-| 🖼️ **Manajemen Galeri** | Upload dan kelola foto kegiatan kampus dengan mudah |
-| 📄 **Manajemen Halaman & Menu** | Buat dan atur halaman statis serta navigasi website |
-| 🏛️ **Struktur Organisasi** | Kelola tampilan struktur organisasi LPMI secara visual |
-| 📱 **Responsive UI** | Tampil sempurna di desktop maupun mobile |
-| ⚡ **CRUD Lengkap** | Operasi data penuh di semua modul |
+<div align="center">
 
----
+| 🔐 Auth & Role | 📊 Dashboard | 📰 Berita |
+|:-:|:-:|:-:|
+| Login aman dengan kontrol akses berbasis peran Admin, Staff, dan Public | Ringkasan konten & aktivitas sistem dalam satu tampilan | Workflow input → approval sebelum dipublikasikan ke publik |
+
+| 🖼️ Galeri | 📄 Halaman & Menu | 🏛️ Struktur Organisasi |
+|:-:|:-:|:-:|
+| Upload & kelola foto kegiatan kampus | Buat & atur halaman statis serta navigasi | Kelola tampilan struktur organisasi LPMI |
+
+</div>
+
+<br/>
 
 ## 🛠️ Tech Stack
 
 ```
-Backend   →  Laravel (PHP)
-Frontend  →  Blade Template + Bootstrap / Tailwind CSS + JavaScript
-Database  →  MySQL
+🔴  Backend    →  Laravel (PHP 8.x)
+🔵  Frontend   →  Blade Template Engine + Bootstrap / Tailwind CSS
+🟡  Database   →  MySQL
+🟢  Other      →  JavaScript, Composer
 ```
 
----
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:1a1a2e,100:0f3460&height=3" width="100%"/>
 
 ## 📸 Screenshots
 
 ### 🖥️ Dashboard
 
-**Admin**
-<img width="900" alt="Admin Dashboard" src="https://github.com/user-attachments/assets/49f28b07-981a-4a7a-bd4e-ce4bbb4843fe" />
+**👑 Admin**
+<img width="100%" alt="Admin Dashboard" src="https://github.com/user-attachments/assets/49f28b07-981a-4a7a-bd4e-ce4bbb4843fe" />
 
-**Staff**
-<img width="900" alt="Staff Dashboard" src="https://github.com/user-attachments/assets/1a4c0613-417e-4387-b03c-85db785de783" />
+**👤 Staff**
+<img width="100%" alt="Staff Dashboard" src="https://github.com/user-attachments/assets/1a4c0613-417e-4387-b03c-85db785de783" />
 
-**Public**
-<img width="900" alt="Public View" src="https://github.com/user-attachments/assets/b5f2362e-6962-42aa-8031-19bfc3828282" />
+**🌐 Public**
+<img width="100%" alt="Public View" src="https://github.com/user-attachments/assets/b5f2362e-6962-42aa-8031-19bfc3828282" />
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:1a1a2e,100:0f3460&height=3" width="100%"/>
 
 ### 📰 News Management
 
-**Tampilan Publik**
-<img width="900" alt="News Public" src="https://github.com/user-attachments/assets/79f502a4-7ed5-4c54-a74b-eab64a408f0b" />
+**🌐 Tampilan Publik**
+<img width="100%" alt="News Public" src="https://github.com/user-attachments/assets/79f502a4-7ed5-4c54-a74b-eab64a408f0b" />
 
-**Staff — Input Berita**
-<img width="900" alt="News Staff" src="https://github.com/user-attachments/assets/6e14c924-10b6-4761-8b45-9876e32b18e7" />
+**✍️ Staff — Input Berita**
+<img width="100%" alt="News Staff" src="https://github.com/user-attachments/assets/6e14c924-10b6-4761-8b45-9876e32b18e7" />
 
-**Admin — Approval**
-<img width="900" alt="News Admin Approval" src="https://github.com/user-attachments/assets/e1a3a114-d154-49e6-a67d-72bfd5827c1d" />
+**✅ Admin — Approval**
+<img width="100%" alt="News Admin Approval" src="https://github.com/user-attachments/assets/e1a3a114-d154-49e6-a67d-72bfd5827c1d" />
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:1a1a2e,100:0f3460&height=3" width="100%"/>
 
 ### 📄 Menu & Page Management *(Role Admin Only)*
 
-**Menu — Index**
-<img width="900" alt="Menu Index" src="https://github.com/user-attachments/assets/b85879c4-aaa9-4a5d-859e-6a46ba9e1c8d" />
+**📋 Menu — Index**
+<img width="100%" alt="Menu Index" src="https://github.com/user-attachments/assets/b85879c4-aaa9-4a5d-859e-6a46ba9e1c8d" />
 
-**Menu — Create**
-<img width="900" alt="Menu Create" src="https://github.com/user-attachments/assets/98e53deb-fac6-49ed-aeef-8fe79f49486d" />
+**➕ Menu — Create**
+<img width="100%" alt="Menu Create" src="https://github.com/user-attachments/assets/98e53deb-fac6-49ed-aeef-8fe79f49486d" />
 
-**Page — Index**
-<img width="900" alt="Page Index" src="https://github.com/user-attachments/assets/4165157c-6818-484c-8cfe-9d609000c3aa" />
+**📋 Page — Index**
+<img width="100%" alt="Page Index" src="https://github.com/user-attachments/assets/4165157c-6818-484c-8cfe-9d609000c3aa" />
 
-**Page — Create**
-<img width="900" alt="Page Create" src="https://github.com/user-attachments/assets/75e6e245-518a-45cb-b5a5-9eb0f4f335a6" />
+**➕ Page — Create**
+<img width="100%" alt="Page Create" src="https://github.com/user-attachments/assets/75e6e245-518a-45cb-b5a5-9eb0f4f335a6" />
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:1a1a2e,100:0f3460&height=3" width="100%"/>
 
 ### 🏛️ Organization Structure Management *(Role Admin Only)*
 
-**Tampilan Publik**
-<img width="900" alt="Org Public" src="https://github.com/user-attachments/assets/7a7353a2-41d6-437d-b379-31e43e27c814" />
+**🌐 Tampilan Publik**
+<img width="100%" alt="Org Public" src="https://github.com/user-attachments/assets/7a7353a2-41d6-437d-b379-31e43e27c814" />
 
-**Panel Admin — Index**
-<img width="900" alt="Org Admin" src="https://github.com/user-attachments/assets/8cf1078b-eef9-4987-8c36-1ccd6ef294c0" />
+**🛠️ Panel Admin — Index**
+<img width="100%" alt="Org Admin" src="https://github.com/user-attachments/assets/8cf1078b-eef9-4987-8c36-1ccd6ef294c0" />
 
-**Panel Admin — Create**
-<img width="900" alt="Org Create" src="https://github.com/user-attachments/assets/8b14070c-d0c1-4b3c-a7fa-1f8951bcaf27" />
+**➕ Panel Admin — Create**
+<img width="100%" alt="Org Create" src="https://github.com/user-attachments/assets/8b14070c-d0c1-4b3c-a7fa-1f8951bcaf27" />
 
----
+<br/>
 
 ## 🚀 Instalasi
 
-> Pastikan sudah menginstall **PHP 8+**, **Composer**, dan **MySQL** di mesin kamu.
+> **Prasyarat:** PHP 8+, Composer, MySQL sudah terinstall.
 
 ```bash
-# 1. Clone repository
+# 1️⃣  Clone repository
 git clone https://github.com/Yefta2404-Ind/lpmi-campus-cms.git
 cd lpmi-campus-cms
 
-# 2. Install dependencies
+# 2️⃣  Install dependencies
 composer install
 
-# 3. Konfigurasi environment
+# 3️⃣  Setup environment
 cp .env.example .env
 php artisan key:generate
 
-# 4. Setup database
-# Edit .env → sesuaikan DB_DATABASE, DB_USERNAME, DB_PASSWORD
+# 4️⃣  Setup database
+# → Edit file .env, sesuaikan DB_DATABASE, DB_USERNAME, DB_PASSWORD
 php artisan migrate
 
-# 5. Jalankan server
+# 5️⃣  Jalankan server
 php artisan serve
 ```
 
-🎉 Buka **http://localhost:8000** di browser kamu!
+🎉 Buka **`http://localhost:8000`** di browser kamu dan mulai eksplorasi!
 
----
+<br/>
 
-## 👤 Author
+## 👨‍💻 Author
 
 <div align="center">
 
-**Yefta Aditya**
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f3460,50:16213e,100:1a1a2e&height=120&section=footer&text=Yefta%20Aditya&fontSize=28&fontColor=e94560&fontAlignY=55&desc=github.com%2FYefta2404-Ind&descAlignY=78&descColor=a8b2d8" width="100%" />
 
 [![GitHub](https://img.shields.io/badge/GitHub-Yefta2404--Ind-181717?style=for-the-badge&logo=github)](https://github.com/Yefta2404-Ind)
 
-*Dibangun dengan ☕ dan Laravel untuk kemajuan LPMI Universitas Gunung Kidul*
+*Dibangun dengan ☕ dan semangat untuk kemajuan LPMI Universitas Gunung Kidul*
 
 </div>
