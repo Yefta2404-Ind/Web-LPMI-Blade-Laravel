@@ -12,7 +12,7 @@ Built with Laravel · PHP 8 · MySQL · Blade · Bootstrap
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)](https://getbootstrap.com)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
-[Live Demo](https://your-demo-link.com) · [Report Bug](https://github.com/Yefta2404-Ind/lpmi-campus-cms/issues) · [Request Feature](https://github.com/Yefta2404-Ind/lpmi-campus-cms/issues)
+[Live Demo](http://lpmi.ugk.ac.id/) · [Report Bug](https://github.com/Yefta2404-Ind/lpmi-campus-cms/issues) · [Request Feature](https://github.com/Yefta2404-Ind/lpmi-campus-cms/issues)
 
 </div>
 
